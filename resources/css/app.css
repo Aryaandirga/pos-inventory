@@ -1,0 +1,43 @@
+@import "tailwindcss";
+:root {
+    color-scheme: light;
+}
+@theme {
+    
+    --font-sans: 'Inter', sans-serif;
+
+    /* Primary - Indigo */
+    --color-primary-50:  #eef2ff;
+    --color-primary-100: #e0e7ff;
+    --color-primary-500: #6366f1;
+    --color-primary-600: #4f46e5;
+    --color-primary-700: #4338ca;
+    /* Mendaftarkan warna pastel Pokémon */
+    --color-poke-yellow: #FFF4B5;
+    --color-poke-pink: #F8BBD0;
+    --color-poke-blue: #B3E5FC;
+    --color-poke-mint: #C8E6C9;
+    --color-ice-blue: #D1EAFF;
+    --color-text-purple: #7B1FA2;
+    --color-text-muted: #546E7A;
+    --color-pastel-brown: #AD8B73;
+    --color-pastel-lightbrown: #CEAB93;
+    --color-pastel-cream: #E3CAA5;
+    --color-pastel-lightcream: #FFFBE9;
+    --color-poke-bg: #F9FAFB;
+
+    /* Neutral */
+    --color-surface:     #ffffff;
+    --color-surface-2:   #f8fafc;
+    --color-border:      #e2e8f0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-thumb { background: #334155; }
+

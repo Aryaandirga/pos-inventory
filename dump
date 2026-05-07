@@ -1,0 +1,37 @@
+tabel Product:
+Produk
+SKU
+Kategori
+harga jual
+stock
+status
+aksi
+
+tabel kategori:
+no
+nama
+deskripsi
+produk
+aksi
+
+tabel satuan:
+no
+nama satuan
+singakatan  
+produk
+aksi
+
+jadi kita mulai project baru, membuat website e-commerce..
+website ini di peruntukan penjualan kartu kartu pokemon.
+tech stack versi laravel saya v13
+tailwind v4
+sisa nya menyesuaikan sesuai dengan yang kamu bilang tadi.
+lalu untuk navbar nya
+saya mau ada:
+home page - isi nya landing page
+shop - isinya untuk belanja online (ada produk,ada keranjang,harga,dll)
+contact us - isinya untuk menghubungi kita, bisa berupa form atau informasi kontak
+tracking market - isinya untuk melihat perkembangan pasar, bisa berupa grafik atau data statistik
+saya ingin website ecommerce ini semenarik mungkin.
+kita lakukan sama sama step by step, agar saya bisa ikut belajar
+boleh kamu yang tentukan baiknya kita mulai dari mana.
