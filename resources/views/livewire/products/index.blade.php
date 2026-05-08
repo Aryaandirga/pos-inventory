@@ -35,7 +35,7 @@
             </div>
             <div class="relative group">
     <select wire:model.live="filterCategory"
-            class="pl-4 pr-10 py-3 bg-white border border-gray-200 rounded-2xl text-sm font-bold text-gray-600 focus:outline-none focus:border-indigo-400 transition-all shadow-sm appearance-none cursor-pointer w-full">
+            class="pl-4 pr-10 py-3 bg-white border border-gray-200 rounded-2xl text-sm font-bold text-gray-600 focus:outline-none focus:border-indigo-400 transition-all shadow-sm appearance-none cursor-pointer w-full sm:w-48">
         <option value="">Semua Kategori</option>
         @foreach($categories as $cat)
             <option value="{{ $cat->id }}">{{ $cat->name }}</option>

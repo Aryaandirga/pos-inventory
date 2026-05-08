@@ -35,7 +35,7 @@
             </div>
             <div class="relative group">
     <select wire:model.live="filterStatus"
-            class="pl-6 pr-12 py-3 bg-white border border-gray-200 rounded-2xl text-sm font-bold text-gray-600 focus:outline-none focus:border-indigo-400 focus:ring-4 focus:ring-indigo-50 transition-all shadow-sm appearance-none cursor-pointer min-w-[180px] w-full">
+            class="pl-6 pr-12 py-3 bg-white border border-gray-200 rounded-2xl text-sm font-bold text-gray-600 focus:outline-none focus:border-indigo-400 focus:ring-4 focus:ring-indigo-50 transition-all shadow-sm appearance-none cursor-pointer w-full sm:w-48">
         <option value="">Semua Status</option>
         <option value="pending">⏳ Pending</option>
         <option value="received">✅ Diterima</option>

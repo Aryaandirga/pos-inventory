@@ -26,10 +26,10 @@
     
     {{-- Filter Card --}}
     <div class="bg-white rounded-[2rem] border border-gray-100 shadow-sm p-6 mb-8 bg-gray-50/30">
-        <div class="flex flex-wrap items-center gap-4">
+        <div class="flex flex-col sm:flex-wrap sm:flex-row items-stretch sm:items-center gap-3">
             
             {{-- 1. Search Produk --}}
-            <div class="relative flex-1 min-w-[280px] group">
+            <div class="relative flex-1 min-w-0 group">
                 <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-300 group-focus-within:text-indigo-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0"/>
                 </svg>
@@ -41,7 +41,7 @@
             {{-- 2. Type Filter --}}
             <div class="relative group">
                 <select wire:model.live="filterType"
-                        class="pl-6 pr-12 py-3 bg-white border border-gray-200 rounded-2xl text-sm font-bold text-gray-600 focus:outline-none focus:border-indigo-400 focus:ring-4 focus:ring-indigo-50 transition-all shadow-sm appearance-none cursor-pointer min-w-[160px]">
+                        class="pl-6 pr-12 py-3 bg-white border border-gray-200 rounded-2xl text-sm font-bold text-gray-600 focus:outline-none focus:border-indigo-400 focus:ring-4 focus:ring-indigo-50 transition-all shadow-sm appearance-none cursor-pointer w-full sm:w-auto">
                     <option value="">Semua Tipe</option>
                     <option value="in">📦 Stok Masuk</option>
                     <option value="out">📤 Stok Keluar</option>
@@ -54,38 +54,27 @@
                 </div>
             </div>
 
-            {{-- 3. Date Range dengan Icon Calendar --}}
-            <div class="flex items-center gap-3 bg-white px-4 py-2 border border-gray-200 rounded-[1.25rem] shadow-sm hover:border-indigo-200 transition-all">
-                {{-- Date From --}}
-                <div class="flex items-center gap-2 group cursor-pointer relative">
-                    <svg class="w-4 h-4 text-gray-400 group-hover:text-indigo-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                    </svg>
-                    <input type="date" wire:model.live="dateFrom"
-                           class="bg-transparent text-[11px] font-bold text-gray-600 focus:outline-none cursor-pointer border-none p-0 focus:ring-0 [color-scheme:light]">
-                </div>
-                
-                <span class="text-gray-300 font-bold px-1 text-xs">—</span>
-                
-                {{-- Date To --}}
-                <div class="flex items-center gap-2 group cursor-pointer relative">
-                    <svg class="w-4 h-4 text-gray-400 group-hover:text-indigo-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                    </svg>
-                    <input type="date" wire:model.live="dateTo"
-                           class="bg-transparent text-[11px] font-bold text-gray-600 focus:outline-none cursor-pointer border-none p-0 focus:ring-0 [color-scheme:light]">
-                </div>
+            {{-- 3. Date Range --}}
+            <div class="flex items-center gap-2 bg-white px-4 py-2.5 border border-gray-200 rounded-2xl shadow-sm hover:border-indigo-200 transition-all w-full sm:w-auto">
+                <svg class="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                </svg>
+                <input type="date" wire:model.live="dateFrom"
+                       class="bg-transparent text-xs font-bold text-gray-600 focus:outline-none border-none p-0 focus:ring-0 [color-scheme:light] w-full sm:w-auto">
+                <span class="text-gray-300 font-bold text-xs flex-shrink-0">—</span>
+                <input type="date" wire:model.live="dateTo"
+                       class="bg-transparent text-xs font-bold text-gray-600 focus:outline-none border-none p-0 focus:ring-0 [color-scheme:light] w-full sm:w-auto">
             </div>
 
-            {{-- 4. Tombol Tampilkan Semua --}}
+            {{-- 4. Reset --}}
             @if($dateFrom || $dateTo || $search || $filterType)
                 <button type="button" 
                         wire:click="$set('dateFrom', null); $set('dateTo', null); $set('search', ''); $set('filterType', '');"
-                        class="flex items-center gap-2 px-5 py-3 bg-gray-100 hover:bg-gray-200 text-gray-600 text-xs font-black rounded-2xl transition-all active:scale-95 uppercase tracking-wider shadow-sm">
+                        class="flex items-center justify-center gap-2 px-4 py-3 bg-gray-100 hover:bg-gray-200 text-gray-600 text-xs font-black rounded-2xl transition-all active:scale-95 uppercase tracking-wider shadow-sm w-full sm:w-auto">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
                     </svg>
-                    Tampilkan Semua
+                    Reset
                 </button>
             @endif
 
