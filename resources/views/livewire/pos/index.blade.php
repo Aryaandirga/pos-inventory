@@ -341,7 +341,7 @@
                     <div style="width:36px;height:36px;background:linear-gradient(135deg,#6366F1,#8B5CF6);border-radius:9px;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;">
                         <svg style="width:18px;height:18px;color:#fff;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
                     </div>
-                    <h2 style="font-size:14px;font-weight:800;color:#111827;margin:0;">POKE-ART</h2>
+                    <h2 style="font-size:14px;font-weight:800;color:#111827;margin:0;">PokeArth Tech</h2>
                     <p style="font-size:10px;color:#9CA3AF;margin:2px 0 0;">Management System</p>
                     <div style="border-top:1.5px dashed #E5E7EB;margin:10px 0;padding-top:10px;">
                         <p style="font-size:10px;color:#6366F1;font-family:'DM Mono',monospace;font-weight:500;margin:0;">{{ $lastSale->invoice_no }}</p>
@@ -399,13 +399,13 @@
 
             {{-- Actions --}}
             <div style="padding:0 20px 18px;display:flex;gap:10px;">
-                <button onclick="closePrintModal()"
+                <button wire:click="closePrint"
                         style="flex:1;padding:10px;background:#F3F4F6;border:none;border-radius:10px;font-size:13px;font-weight:700;color:#374151;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;"
                         onmouseover="this.style.background='#E5E7EB'"
                         onmouseout="this.style.background='#F3F4F6'">
                     Tutup
                 </button>
-                <button onclick="printReceipt()"
+                <button onclick="window.print()"
                         style="flex:1;padding:10px;background:#6366F1;border:none;border-radius:10px;font-size:13px;font-weight:700;color:#fff;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;display:flex;align-items:center;justify-content:center;gap:6px;"
                         onmouseover="this.style.background='#4F46E5'"
                         onmouseout="this.style.background='#6366F1'">
