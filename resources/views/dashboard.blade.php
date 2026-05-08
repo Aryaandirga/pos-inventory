@@ -52,7 +52,7 @@ $cards = [
 ];
 @endphp
 
-<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:24px;" class="lg:grid-cols-4">
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:24px;" class="lg:grid-cols-4 sm:grid-cols-2">
     @foreach($cards as $i => $card)
     <div style="
         background:#fff;

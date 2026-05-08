@@ -1,5 +1,5 @@
 <div>
-    <div class="flex items-center justify-between mb-6">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
         <div>
             <h2 class="text-xl font-black text-gray-800">Riwayat Penjualan</h2>
             <p class="text-sm text-gray-400 mt-0.5">Semua transaksi POS</p>

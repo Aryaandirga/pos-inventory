@@ -134,7 +134,13 @@
 
         /* ── Main ── */
         .main-content {
-            padding: 28px 28px;
+            padding: 16px 16px;
+        }
+
+        @media (min-width: 1024px) {
+            .main-content {
+                padding: 28px 28px;
+            }
         }
 
         @media print {
