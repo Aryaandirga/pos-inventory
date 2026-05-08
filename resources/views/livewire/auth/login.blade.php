@@ -5,53 +5,63 @@
     <div class="w-full max-w-5xl bg-white rounded-2xl shadow-2xl overflow-hidden flex">
 
         <!-- LEFT: Pokeball Animation -->
-        <div class="hidden lg:flex w-1/2 bg-gradient-to-br from-rose-200 via-amber-100 to-sky-200 items-center justify-center overflow-hidden relative">
+        <div class="hidden lg:flex w-1/2 items-center justify-center overflow-hidden relative flex-col gap-6"
+             style="background: linear-gradient(135deg, #fecdd3 0%, #fef3c7 50%, #bae6fd 100%);">
+
+            <!-- Tulisan atas -->
+            <div class="absolute top-8 text-center">
+                <p class="text-lg font-black text-gray-700 tracking-tight">PokeArth Tech</p>
+                <p class="text-xs text-gray-400 mt-0.5">Management System</p>
+            </div>
 
             <!-- Background glow saat register -->
-            <div
-                class="absolute inset-0 transition-all duration-700"
-                :class="tab === 'register' ? 'opacity-100' : 'opacity-0'"
-                style="background: radial-gradient(circle at center, rgba(255,220,80,0.35) 0%, transparent 70%);"
-            ></div>
+            <div class="absolute inset-0 transition-opacity duration-700 pointer-events-none"
+                 :class="tab === 'register' ? 'opacity-100' : 'opacity-0'"
+                 style="background: radial-gradient(circle at center, rgba(255,220,80,0.4) 0%, transparent 65%);"></div>
 
-            <!-- Pokeball Container -->
-            <div class="relative flex items-center justify-center" style="width:160px;height:160px;">
+            <!-- Pokeball: satu SVG, animasi via Alpine -->
+            <div class="relative" style="width:160px;height:160px;">
+                <svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;">
 
-                <!-- SVG Pokeball static state (login) -->
-                <svg x-show="tab==='login'" width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" class="absolute transition-all duration-500">
-                    <!-- Top half red -->
-                    <path d="M80 4 A76 76 0 0 1 156 80 L80 80 Z" fill="#f87171" stroke="#000" stroke-width="4"/>
-                    <path d="M80 4 A76 76 0 0 0 4 80 L80 80 Z" fill="#f87171" stroke="#000" stroke-width="4"/>
-                    <!-- Bottom half white -->
-                    <path d="M4 80 A76 76 0 0 0 156 80 L80 80 Z" fill="#fff" stroke="#000" stroke-width="4"/>
-                    <!-- Outer circle -->
-                    <circle cx="80" cy="80" r="76" stroke="#000" stroke-width="4" fill="none"/>
-                    <!-- Middle line -->
-                    <line x1="4" y1="80" x2="156" y2="80" stroke="#000" stroke-width="4"/>
-                    <!-- Center button -->
-                    <circle cx="80" cy="80" r="14" fill="#fff" stroke="#000" stroke-width="4"/>
-                    <!-- Shine on top -->
-                    <ellipse cx="55" cy="42" rx="14" ry="6" fill="white" opacity="0.2" transform="rotate(-20 55 42)"/>
-                </svg>
-
-                <!-- SVG Pokeball open state (register) -->
-                <svg x-show="tab==='register'" x-cloak width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" class="absolute transition-all duration-500">
-                    <!-- Top half red - moved up -->
-                    <g transform="translate(80,80) rotate(-8) translate(-80,56)">
-                        <path d="M80 4 A76 76 0 0 1 156 80 L80 80 Z" fill="#f87171" stroke="#000" stroke-width="4"/>
-                        <path d="M80 4 A76 76 0 0 0 4 80 L80 80 Z" fill="#f87171" stroke="#000" stroke-width="4"/>
-                        <path d="M4 80 L156 80" stroke="#000" stroke-width="4"/>
-                        <ellipse cx="55" cy="42" rx="14" ry="6" fill="white" opacity="0.2" transform="rotate(-20 55 42)"/>
+                    <!-- TOP HALF (merah) -->
+                    <g :style="tab === 'register'
+                        ? 'transform: translate(80px,80px) rotate(-12deg) translate(-80px,-80px) translateY(-22px); transition: transform 0.5s cubic-bezier(.4,0,.2,1);'
+                        : 'transform: translate(0,0); transition: transform 0.5s cubic-bezier(.4,0,.2,1);'">
+                        <path d="M4 80 A76 76 0 0 1 156 80 Z" fill="#f87171"/>
+                        <path d="M4 80 A76 76 0 0 1 156 80 Z" fill="none" stroke="#111" stroke-width="3.5"/>
+                        <!-- shine -->
+                        <ellipse cx="52" cy="44" rx="13" ry="5" fill="white" opacity="0.25" transform="rotate(-20 52 44)"/>
                     </g>
-                    <!-- Bottom half white - moved down -->
-                    <g transform="translate(80,80) rotate(8) translate(-80,104)">
-                        <path d="M4 80 A76 76 0 0 0 156 80 L80 80 Z" fill="#fff" stroke="#000" stroke-width="4"/>
-                        <path d="M4 80 L156 80" stroke="#000" stroke-width="4"/>
-                    </g>
-                    <!-- Center button yellow -->
-                    <circle cx="80" cy="80" r="18" fill="#fef08a" stroke="#000" stroke-width="4"/>
-                </svg>
 
+                    <!-- BOTTOM HALF (putih) -->
+                    <g :style="tab === 'register'
+                        ? 'transform: translate(80px,80px) rotate(12deg) translate(-80px,-80px) translateY(22px); transition: transform 0.5s cubic-bezier(.4,0,.2,1);'
+                        : 'transform: translate(0,0); transition: transform 0.5s cubic-bezier(.4,0,.2,1);'">
+                        <path d="M4 80 A76 76 0 0 0 156 80 Z" fill="#fff"/>
+                        <path d="M4 80 A76 76 0 0 0 156 80 Z" fill="none" stroke="#111" stroke-width="3.5"/>
+                    </g>
+
+                    <!-- OUTER CIRCLE -->
+                    <circle cx="80" cy="80" r="76" stroke="#111" stroke-width="3.5" fill="none"/>
+
+                    <!-- MIDDLE LINE -->
+                    <line x1="4" y1="80" x2="156" y2="80" stroke="#111" stroke-width="3.5"
+                          :style="tab === 'register' ? 'opacity:0;transition:opacity 0.3s' : 'opacity:1;transition:opacity 0.3s'"/>
+
+                    <!-- CENTER BUTTON -->
+                    <circle cx="80" cy="80"
+                        :r="tab === 'register' ? '18' : '13'"
+                        :fill="tab === 'register' ? '#fef08a' : '#fff'"
+                        stroke="#111" stroke-width="3.5"
+                        style="transition: r 0.4s cubic-bezier(.4,0,.2,1), fill 0.4s;"/>
+
+                    <!-- Inner circle highlight -->
+                    <circle cx="80" cy="80"
+                        :r="tab === 'register' ? '10' : '6'"
+                        :fill="tab === 'register' ? '#fde047' : '#e5e7eb'"
+                        style="transition: r 0.4s cubic-bezier(.4,0,.2,1), fill 0.4s;"/>
+
+                </svg>
             </div>
 
             <!-- Label bawah -->
