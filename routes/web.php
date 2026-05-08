@@ -91,9 +91,11 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/export/stock-pdf', [ExportController::class, 'stockPdf'])->name('export.stock.pdf');
     });
 
-    // ===== USERS (admin only) =====
-    Route::middleware(['role:admin'])->group(function () {
+    // ===== USERS (admin & kasir & gudang & guest bisa lihat, hanya admin bisa create/edit) =====
+    Route::middleware(['role:admin,kasir,gudang,guest'])->group(function () {
         Route::get('/users', App\Livewire\Users\Index::class)->name('users.index');
+    });
+    Route::middleware(['role:admin'])->group(function () {
         Route::get('/users/create', App\Livewire\Users\Create::class)->name('users.create');
         Route::get('/users/{user}/edit', App\Livewire\Users\Edit::class)->name('users.edit');
     });

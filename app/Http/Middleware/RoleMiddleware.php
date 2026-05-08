@@ -9,7 +9,7 @@ class RoleMiddleware
 {
     public function handle(Request $request, Closure $next, string ...$roles): mixed
     {
-        if (!auth()->check()) {
+        if (! auth()->check()) {
             return redirect()->route('login');
         }
 
@@ -19,6 +19,7 @@ class RoleMiddleware
             }
         }
 
-        abort(403, 'Akses ditolak!');
+        // Render custom 403 view instead of plain abort
+        return response()->view('errors.403', [], 403);
     }
 }
