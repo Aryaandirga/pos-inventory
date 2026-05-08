@@ -15,11 +15,13 @@
             <h2 class="text-2xl font-black text-gray-800 tracking-tight">Manajemen User</h2>
             <p class="text-sm text-gray-400 mt-1">Kelola akses, role, dan akun pengguna sistem</p>
         </div>
+        @if(auth()->user()->hasRole('admin'))
         <a href="{{ route('users.create') }}"
            class="flex items-center justify-center gap-2 px-6 py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-black rounded-2xl transition-all shadow-xl shadow-indigo-100 active:scale-95">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
             Tambah User Baru
         </a>
+        @endif
     </div>
 
     {{-- Table Card --}}

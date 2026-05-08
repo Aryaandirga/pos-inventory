@@ -3,42 +3,50 @@
 namespace App\Livewire\Users;
 
 use App\Models\User;
-use Livewire\Component;
 use Illuminate\Support\Facades\Hash;
+use Livewire\Component;
 use Spatie\Permission\Models\Role;
 
 class Edit extends Component
 {
     public User $user;
-    public string $name     = '';
-    public string $email    = '';
+
+    public string $name = '';
+
+    public string $email = '';
+
     public string $password = '';
-    public string $role     = '';
+
+    public string $role = '';
 
     public function mount(User $user)
     {
-        $this->user     = $user;
-        $this->name     = $user->name;
-        $this->email    = $user->email;
-        $this->role     = $user->roles->first()?->name ?? '';
+        $this->user = $user;
+        $this->name = $user->name;
+        $this->email = $user->email;
+        $this->role = $user->roles->first()?->name ?? '';
     }
 
     protected function rules()
     {
         return [
-            'name'     => 'required|min:3',
-            'email'    => 'required|email|unique:users,email,' . $this->user->id,
+            'name' => 'required|min:3',
+            'email' => 'required|email|unique:users,email,'.$this->user->id,
             'password' => 'nullable|min:6',
-            'role'     => 'required|exists:roles,name',
+            'role' => 'required|exists:roles,name',
         ];
     }
 
     public function save()
     {
+        if (! auth()->user()->hasRole('admin')) {
+            abort(403);
+        }
+
         $this->validate();
 
         $this->user->update([
-            'name'  => $this->name,
+            'name' => $this->name,
             'email' => $this->email,
             ...(($this->password) ? ['password' => Hash::make($this->password)] : []),
         ]);
@@ -46,6 +54,7 @@ class Edit extends Component
         $this->user->syncRoles([$this->role]);
 
         session()->flash('success', 'User berhasil diupdate!');
+
         return redirect()->route('users.index');
     }
 

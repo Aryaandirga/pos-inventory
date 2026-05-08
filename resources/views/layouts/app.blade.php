@@ -165,7 +165,7 @@
                     </svg>
                 </div>
                 <div>
-                    <div class="sidebar-app-name">POKE-ART</div>
+                    <div class="sidebar-app-name">PokeArth Tech</div>
                     <div class="sidebar-app-sub">Management System</div>
                 </div>
             </a>
