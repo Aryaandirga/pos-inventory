@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Clear all cache first
+php artisan config:clear
+php artisan cache:clear
+
 # Cache Laravel config
 php artisan config:cache
 php artisan route:cache
