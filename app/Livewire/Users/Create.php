@@ -4,6 +4,7 @@ namespace App\Livewire\Users;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Livewire\Component;
 use Spatie\Permission\Models\Role;
 
@@ -34,7 +35,7 @@ class Create extends Component
 
         $user = User::create([
             'name' => $this->name,
-            'email' => $this->email,
+            'email' => Str::lower($this->email),
             'password' => Hash::make($this->password),
         ]);
 

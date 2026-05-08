@@ -4,6 +4,7 @@ namespace App\Livewire\Users;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Livewire\Component;
 use Spatie\Permission\Models\Role;
 
@@ -47,7 +48,7 @@ class Edit extends Component
 
         $this->user->update([
             'name' => $this->name,
-            'email' => $this->email,
+            'email' => Str::lower($this->email),
             ...(($this->password) ? ['password' => Hash::make($this->password)] : []),
         ]);
 
