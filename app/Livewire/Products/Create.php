@@ -49,10 +49,20 @@ class Create extends Component
         $this->validate();
 
         // ✅ Pakai Laravel Storage — lebih stabil di Windows
-        $imageName = null;
-        if ($this->image) {
-            $imageName = $this->image->store('products', 'public');
-        }
+       $imageName = null;
+if ($this->image) {
+    $cloudinary = new \Cloudinary\Cloudinary([
+        'cloud' => [
+            'cloud_name' => config('cloudinary.cloud_name'),
+            'api_key'    => config('cloudinary.api_key'),
+            'api_secret' => config('cloudinary.api_secret'),
+        ],
+    ]);
+    $result    = $cloudinary->uploadApi()->upload($this->image->getRealPath(), [
+        'folder' => 'pos-products',
+    ]);
+    $imageName = $result['secure_url'];
+}
 
         Product::create([
             'name'        => $this->name,
