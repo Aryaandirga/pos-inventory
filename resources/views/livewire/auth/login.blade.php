@@ -1,11 +1,11 @@
 <x-layouts::auth.simple>
 
-<div x-data="{ tab: 'login' }" class="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+<div x-data="{ tab: 'login' }" class="min-h-screen flex items-center justify-center bg-gray-100 px-4 py-8">
 
     <div class="w-full max-w-5xl bg-white rounded-2xl shadow-2xl overflow-hidden flex">
 
         <!-- LEFT: Pokeball Animation -->
-        <div class="hidden lg:flex w-1/2 bg-linear-to-br from-rose-200 via-amber-100 to-sky-200 items-center justify-center overflow-hidden relative">
+        <div class="hidden lg:flex w-1/2 bg-gradient-to-br from-rose-200 via-amber-100 to-sky-200 items-center justify-center overflow-hidden relative">
 
             <!-- Background glow saat register -->
             <div
@@ -15,57 +15,57 @@
             ></div>
 
             <!-- Pokeball Container -->
-            <div class="relative w-36 h-36">
+            <div class="relative" style="width:144px;height:144px;">
 
-                <!-- Lingkaran luar (shadow/border) -->
-                <div class="absolute inset-0 rounded-full border-4 border-black z-30 pointer-events-none"></div>
+                <!-- BOTTOM HALF: Putih (render dulu agar di bawah) -->
+                <div
+                    class="absolute bottom-0 left-0 w-full transition-all duration-500 ease-in-out"
+                    style="height:50%;background:#fff;border-left:4px solid #000;border-right:4px solid #000;border-bottom:4px solid #000;border-radius:0 0 9999px 9999px;"
+                    :style="tab === 'register' ? 'transform:translateY(24px) rotate(8deg)' : 'transform:translateY(0) rotate(0)'"
+                ></div>
 
                 <!-- TOP HALF: Merah -->
                 <div
-                    class="absolute top-0 left-0 w-full h-1/2 bg-red-400 border-4 border-black rounded-t-full overflow-hidden transition-all duration-500 ease-in-out z-20"
-                    :class="tab === 'register' ? '-translate-y-6 rotate-[-8deg]' : 'translate-y-0 rotate-0'"
+                    class="absolute top-0 left-0 w-full transition-all duration-500 ease-in-out overflow-hidden"
+                    style="height:50%;background:#f87171;border-left:4px solid #000;border-right:4px solid #000;border-top:4px solid #000;border-radius:9999px 9999px 0 0;"
+                    :style="tab === 'register' ? 'transform:translateY(-24px) rotate(-8deg)' : 'transform:translateY(0) rotate(0)'"
                 >
                     <!-- Kilap -->
-                    <div class="absolute top-2 left-5 w-8 h-3 bg-white opacity-20 rounded-full rotate-[-20deg]"></div>
+                    <div class="absolute top-2 left-5 w-8 h-3 bg-white opacity-20 rounded-full" style="transform:rotate(-20deg)"></div>
                 </div>
 
                 <!-- GARIS TENGAH -->
                 <div
-                    class="absolute top-1/2 left-0 w-full h-1.25 bg-black z-30 transition-all duration-500"
-                    :class="tab === 'register' ? 'opacity-0' : 'opacity-100'"
-                    style="transform: translateY(-50%);"
+                    class="absolute left-0 w-full transition-all duration-500"
+                    style="top:50%;height:4px;background:#000;transform:translateY(-50%);"
+                    :style="tab === 'register' ? 'opacity:0' : 'opacity:1'"
                 ></div>
+
+                <!-- LINGKARAN LUAR (border overlay) -->
+                <div class="absolute inset-0 rounded-full pointer-events-none" style="border:4px solid #000;z-index:10;"></div>
 
                 <!-- TOMBOL TENGAH -->
                 <div
-                    class="absolute top-1/2 left-1/2 z-40 transition-all duration-500 ease-in-out"
-                    :class="tab === 'register'
-                        ? 'w-10 h-10 bg-yellow-200 border-4 border-black -translate-x-1/2 -translate-y-1/2 scale-110'
-                        : 'w-7 h-7 bg-white border-4 border-black -translate-x-1/2 -translate-y-1/2 scale-100'"
-                    style="border-radius: 50%;"
-                ></div>
-
-                <!-- BOTTOM HALF: Putih -->
-                <div
-                    class="absolute bottom-0 left-0 w-full h-1/2 bg-white border-4 border-black rounded-b-full transition-all duration-500 ease-in-out z-20"
-                    :class="tab === 'register' ? 'translate-y-6 rotate-[8deg]' : 'translate-y-0 rotate-0'"
+                    class="absolute transition-all duration-500 ease-in-out"
+                    style="top:50%;left:50%;z-index:20;border-radius:50%;border:4px solid #000;"
+                    :style="tab === 'register'
+                        ? 'width:40px;height:40px;background:#fef08a;transform:translate(-50%,-50%) scale(1.1)'
+                        : 'width:28px;height:28px;background:#fff;transform:translate(-50%,-50%) scale(1)'"
                 ></div>
 
             </div>
 
             <!-- Label bawah -->
-            <div class="absolute bottom-8 text-center transition-all duration-300">
-                <p
-                    class="text-sm font-semibold text-gray-600 transition-all duration-300"
-                    x-text="tab === 'login' ? 'Masuk ke akunmu' : 'Buat akun baru'"
-                ></p>
+            <div class="absolute bottom-8 text-center">
+                <p class="text-sm font-semibold text-gray-600 transition-all duration-300"
+                   x-text="tab === 'login' ? 'Masuk ke akunmu' : 'Buat akun baru'"></p>
                 <p class="text-xs text-gray-400 mt-1">Pokemon Card POS</p>
             </div>
         </div>
 
         <!-- RIGHT: Form -->
-        <div class="w-full lg:w-1/2 p-8">
-            <div class="max-w-sm mx-auto space-y-5">
+        <div class="w-full lg:w-1/2 p-8 flex flex-col">
+            <div class="max-w-sm mx-auto w-full space-y-5 flex flex-col flex-1">
 
                 <!-- HEADER -->
                 <div class="text-center space-y-1">
@@ -87,8 +87,8 @@
                     </button>
                 </div>
 
-                <!-- FORM WRAPPER -->
-                <div class="relative min-h-[360px] overflow-hidden">
+                <!-- FORM WRAPPER — fixed height, scroll jika overflow -->
+                <div class="relative flex-1" style="min-height:380px;">
 
                     <!-- LOGIN FORM -->
                     <form
@@ -100,7 +100,7 @@
                         x-transition:leave="transform transition duration-300 ease-in-out"
                         x-transition:leave-start="translate-x-0 opacity-100"
                         x-transition:leave-end="translate-x-full opacity-0"
-                        class="space-y-4 absolute w-full will-change-transform"
+                        class="space-y-4 absolute inset-0 will-change-transform overflow-y-auto"
                         method="POST"
                         action="{{ route('login.store') }}"
                     >
@@ -152,7 +152,7 @@
                         x-transition:leave="transform transition duration-300 ease-in-out"
                         x-transition:leave-start="translate-x-0 opacity-100"
                         x-transition:leave-end="-translate-x-full opacity-0"
-                        class="space-y-3 absolute w-full will-change-transform"
+                        class="space-y-3 absolute inset-0 will-change-transform overflow-y-auto pb-1"
                         method="POST"
                         action="{{ route('register') }}"
                     >
@@ -182,7 +182,7 @@
                             <label class="text-xs font-medium text-gray-600">Password</label>
                             <input type="password" name="password"
                                 class="w-full px-3.5 py-2.5 border border-gray-300 rounded-xl text-sm text-gray-800 bg-white placeholder-gray-300 focus:outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-100 transition-all"
-                                placeholder="••••••••">
+                                placeholder="Min. 8 karakter (huruf & angka)">
                         </div>
 
                         <div class="space-y-1.5">
