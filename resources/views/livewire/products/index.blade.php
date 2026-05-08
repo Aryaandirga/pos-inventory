@@ -71,7 +71,7 @@
                             <div class="flex items-center gap-4">
                                 <div class="relative w-12 h-12 flex-shrink-0">
                                     @if($product->image)
-                                        <img src="{{ asset('storage/' . $product->image) }}"
+                                        <img src="{{ $product->image_url }}"
                                              class="w-full h-full rounded-2xl object-cover shadow-sm group-hover:scale-110 transition-transform">
                                     @else
                                         <div class="w-full h-full bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-300 group-hover:bg-indigo-100 transition-colors">

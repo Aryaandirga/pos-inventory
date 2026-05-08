@@ -14,8 +14,8 @@ class Product extends Model
     ];
 
     protected $casts = [
-        'is_active'  => 'boolean',
-        'price'      => 'decimal:2',
+        'is_active' => 'boolean',
+        'price' => 'decimal:2',
         'cost_price' => 'decimal:2',
     ];
 
@@ -37,12 +37,12 @@ class Product extends Model
 
     private static function generateSlug(string $name): string
     {
-        $slug     = Str::slug($name);
+        $slug = Str::slug($name);
         $original = $slug;
-        $count    = 1;
+        $count = 1;
 
         while (self::where('slug', $slug)->exists()) {
-            $slug = $original . '-' . $count++;
+            $slug = $original.'-'.$count++;
         }
 
         return $slug;
@@ -61,5 +61,20 @@ class Product extends Model
     public function isLowStock(): bool
     {
         return $this->stock <= $this->min_stock;
+    }
+
+    public function getImageUrlAttribute(): ?string
+    {
+        if (! $this->image) {
+            return null;
+        }
+
+        // Jika sudah full URL (Cloudinary), langsung pakai
+        if (str_starts_with($this->image, 'http')) {
+            return $this->image;
+        }
+
+        // Legacy: path lokal
+        return asset('storage/'.$this->image);
     }
 }

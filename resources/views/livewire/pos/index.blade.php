@@ -37,7 +37,7 @@
                         {{-- Gambar --}}
                         <div style="width:100%;height:300px;background:#F6F4E8;border-radius:8px;margin-bottom:10px;display:flex;align-items:center;justify-content:center;overflow:hidden;">
                             @if($product->image)
-                                <img src="{{ asset('uploads/products/' . $product->image) }}"
+                                <img src="{{ $product->image_url }}"
                                      style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
                             @else
                                 <svg style="width:28px;height:28px;color:#D1D5DB;" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">

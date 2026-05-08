@@ -114,7 +114,7 @@
                     @if($image)
                         <img src="{{ $image->temporaryUrl() }}" class="w-full h-40 object-cover rounded-xl mb-3">
                     @elseif($existingImage)
-                        <img src="{{ asset('uploads/products/' . $existingImage) }}" class="w-full h-40 object-cover rounded-xl mb-3">
+                        <img src="{{ str_starts_with($existingImage, 'http') ? $existingImage : asset('storage/' . $existingImage) }}" class="w-full h-40 object-cover rounded-xl mb-3">
                     @else
                         <div class="w-full h-40 bg-gray-50 rounded-xl flex items-center justify-center mb-3 border-2 border-dashed border-gray-200">
                             <div class="text-center">
