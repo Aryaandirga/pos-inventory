@@ -34,4 +34,12 @@ class ProductApiController extends Controller
 
         return response()->json($product);
     }
+    public function categories()
+{
+    $categories = \App\Models\Category::withCount(['products' => function($q) {
+        $q->where('is_active', true);
+    }])->get();
+
+    return response()->json($categories);
+}
 }
