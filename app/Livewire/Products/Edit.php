@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Unit;
 use Cloudinary\Cloudinary;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -93,9 +94,21 @@ class Edit extends Component
                 $cloudinary->uploadApi()->destroy('pos-products/'.$publicId);
             }
 
-            $result = $cloudinary->uploadApi()->upload($this->image->getRealPath(), [
+            // Baca file dari Livewire temp storage (bisa di S3/Supabase)
+            $tempPath = $this->image->path();
+            $fileContent = Storage::disk(config('livewire.temporary_file_upload.disk', 'local'))->get($tempPath);
+
+            // Upload ke Cloudinary via stream
+            $tempFile = tmpfile();
+            fwrite($tempFile, $fileContent);
+            $tempFilePath = stream_get_meta_data($tempFile)['uri'];
+
+            $result = $cloudinary->uploadApi()->upload($tempFilePath, [
                 'folder' => 'pos-products',
             ]);
+
+            fclose($tempFile);
+
             $imageName = $result['secure_url'];
         }
 
