@@ -36,12 +36,18 @@ class OrderApiController extends Controller
             }
 
             // Buat sale
-           $sale = Sale::create([
-    'user_id'      => $request->user_id ?? 1, // tambahkan ini
-    'total_amount' => $request->grand_total,
-    'grand_total'  => $request->grand_total,
-    'status'       => 'completed',
-    'note'         => 'Order dari Ecommerce - ' . ($request->customer_name ?? 'Guest'),
+          $sale = Sale::create([
+    'user_id'        => $request->user_id ?? 1,
+    'invoice_no'     => 'INV-ECOM-' . strtoupper(\Illuminate\Support\Str::random(8)),
+    'date'           => now()->toDateString(),
+    'total'          => $request->grand_total,
+    'discount'       => 0,
+    'grand_total'    => $request->grand_total,
+    'payment_method' => $request->payment_method ?? 'transfer',
+    'amount_paid'    => $request->grand_total,
+    'change'         => 0,
+    'status'         => 'completed',
+    'notes'          => 'Order dari Ecommerce - ' . ($request->customer_name ?? 'Guest'),
 ]);
 
             // Buat sale items & kurangi stok
