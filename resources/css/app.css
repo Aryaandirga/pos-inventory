@@ -41,3 +41,43 @@
 /* Dark mode scrollbar */
 .dark ::-webkit-scrollbar-thumb { background: #334155; }
 
+/* TOP */
+.top-open {
+    transform: translateY(-28px) rotate(-14deg);
+}
+.top-close {
+    transform: translateY(0) rotate(0);
+}
+
+/* BOTTOM */
+.bottom-open {
+    transform: translateY(28px) rotate(14deg);
+}
+.bottom-close {
+    transform: translateY(0) rotate(0);
+}
+
+/* BUTTON */
+.btn-open {
+    r: 18;
+    fill: #fef08a;
+    opacity: 0;
+}
+.btn-close {
+    r: 13;
+    fill: #fff;
+    opacity: 1;
+}
+
+/* INNER */
+.inner-open {
+    r: 10;
+    fill: #fde047;
+    opacity: 0;
+}
+.inner-close {
+    r: 6;
+    fill: #e5e7eb;
+    opacity: 1;
+}
+

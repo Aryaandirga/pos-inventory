@@ -4,68 +4,56 @@
 
     <div class="w-full max-w-5xl bg-white rounded-2xl shadow-2xl overflow-hidden flex">
 
-        <!-- LEFT: Pokeball Animation -->
-        <div class="hidden lg:flex w-1/2 items-center justify-center relative flex-col gap-6"
-             style="background: linear-gradient(135deg, #fecdd3 0%, #fef3c7 50%, #bae6fd 100%);">
+       <div 
+    x-data="{ tab: 'login' }" 
+    class="relative" 
+    style="width:160px;height:210px;display:flex;align-items:center;justify-content:center;"
+>
 
-            <!-- Tulisan atas -->
-            <div class="absolute top-8 text-center">
-                <p class="text-lg font-black text-gray-700 tracking-tight">PokeArth Tech</p>
-                <p class="text-xs text-gray-400 mt-0.5">Management System</p>
-            </div>
+<svg width="160" height="210" viewBox="0 -25 160 210" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;">
 
-            <!-- Background glow saat register -->
-            <div class="absolute inset-0 transition-opacity duration-700 pointer-events-none"
-                 :class="tab === 'register' ? 'opacity-100' : 'opacity-0'"
-                 style="background: radial-gradient(circle at center, rgba(255,220,80,0.4) 0%, transparent 65%);"></div>
+    <!-- TOP HALF -->
+    <g 
+        :class="tab === 'register' ? 'top-open' : 'top-close'"
+        class="transition-all duration-500 ease-out origin-center"
+    >
+        <path d="M4 80 A76 76 0 0 1 156 80 Z" fill="#f87171"/>
+        <path d="M4 80 A76 76 0 0 1 156 80 Z" fill="none" stroke="#111" stroke-width="3.5"/>
+        <ellipse cx="52" cy="44" rx="13" ry="5" fill="white" opacity="0.25" transform="rotate(-20 52 44)"/>
+    </g>
 
-            <!-- Pokeball: satu SVG, animasi via Alpine -->
-            <div class="relative" style="width:160px;height:210px;display:flex;align-items:center;justify-content:center;">
-    <svg width="160" height="210" viewBox="0 -25 160 210" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;">
+    <!-- BOTTOM HALF -->
+    <g 
+        :class="tab === 'register' ? 'bottom-open' : 'bottom-close'"
+        class="transition-all duration-500 ease-out origin-center"
+    >
+        <path d="M4 80 A76 76 0 0 0 156 80 Z" fill="#fff"/>
+        <path d="M4 80 A76 76 0 0 0 156 80 Z" fill="none" stroke="#111" stroke-width="3.5"/>
+    </g>
 
-                    <!-- TOP HALF (merah) -->
-                    <g :style="tab === 'register'
-                        ? 'transform: translate(80px,80px) rotate(-12deg) translate(-80px,-80px) translateY(-22px); transition: transform 0.5s cubic-bezier(.4,0,.2,1);'
-                        : 'transform: translate(0,0); transition: transform 0.5s cubic-bezier(.4,0,.2,1);'">
-                        <path d="M4 80 A76 76 0 0 1 156 80 Z" fill="#f87171"/>
-                        <path d="M4 80 A76 76 0 0 1 156 80 Z" fill="none" stroke="#111" stroke-width="3.5"/>
-                        <!-- shine -->
-                        <ellipse cx="52" cy="44" rx="13" ry="5" fill="white" opacity="0.25" transform="rotate(-20 52 44)"/>
-                    </g>
+    <!-- OUTER -->
+    <circle cx="80" cy="80" r="76" stroke="#111" stroke-width="3.5" fill="none"/>
 
-                    <!-- BOTTOM HALF (putih) -->
-                    <g :style="tab === 'register'
-                        ? 'transform: translate(80px,80px) rotate(12deg) translate(-80px,-80px) translateY(22px); transition: transform 0.5s cubic-bezier(.4,0,.2,1);'
-                        : 'transform: translate(0,0); transition: transform 0.5s cubic-bezier(.4,0,.2,1);'">
-                        <path d="M4 80 A76 76 0 0 0 156 80 Z" fill="#fff"/>
-                        <path d="M4 80 A76 76 0 0 0 156 80 Z" fill="none" stroke="#111" stroke-width="3.5"/>
-                    </g>
+    <!-- LINE -->
+    <line x1="4" y1="80" x2="156" y2="80"
+          stroke="#111" stroke-width="3.5"
+          :class="tab === 'register' ? 'opacity-0' : 'opacity-100 transition-all duration-300'" />
 
-                    <!-- OUTER CIRCLE -->
-                    <circle cx="80" cy="80" r="76" stroke="#111" stroke-width="3.5" fill="none"/>
+    <!-- BUTTON -->
+    <circle cx="80" cy="80"
+        :class="tab === 'register' ? 'btn-open' : 'btn-close'"
+        stroke="#111" stroke-width="3.5"
+        class="transition-all duration-300"
+    />
 
-                    <!-- MIDDLE LINE -->
-                    <line x1="4" y1="80" x2="156" y2="80" stroke="#111" stroke-width="3.5"
-                          :style="tab === 'register' ? 'opacity:0;transition:opacity 0.3s' : 'opacity:1;transition:opacity 0.3s'"/>
+    <!-- INNER -->
+    <circle cx="80" cy="80"
+        :class="tab === 'register' ? 'inner-open' : 'inner-close'"
+        class="transition-all duration-300"
+    />
 
-                    <!-- CENTER BUTTON -->
-                    <circle cx="80" cy="80"
-    :r="tab === 'register' ? '18' : '13'"
-    :fill="tab === 'register' ? '#fef08a' : '#fff'"
-    :opacity="tab === 'register' ? '0' : '1'"
-    stroke="#111" stroke-width="3.5"
-    style="transition: r 0.4s cubic-bezier(.4,0,.2,1), fill 0.4s, opacity 0.4s;"/>
-
-
-                    <!-- Inner circle highlight -->
-                    <circle cx="80" cy="80"
-    :r="tab === 'register' ? '10' : '6'"
-    :fill="tab === 'register' ? '#fde047' : '#e5e7eb'"
-    :opacity="tab === 'register' ? '0' : '1'"
-    style="transition: r 0.4s cubic-bezier(.4,0,.2,1), fill 0.4s, opacity 0.4s;"/>
-
-                </svg>
-            </div>
+</svg>
+</div>
 
             <!-- Label bawah -->
             <div class="absolute bottom-8 text-center">
