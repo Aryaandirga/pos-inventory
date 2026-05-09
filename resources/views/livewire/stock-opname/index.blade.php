@@ -22,12 +22,10 @@
         </a>
     </div>
 
-    <div> {{-- SATU-SATUNYA PEMBUNGKUS UTAMA --}}
-    
     {{-- Filter Card --}}
     <div class="bg-white rounded-[2rem] border border-gray-100 shadow-sm p-6 mb-8 bg-gray-50/30">
         <div class="flex flex-col sm:flex-wrap sm:flex-row items-stretch sm:items-center gap-3">
-            
+
             {{-- 1. Search Produk --}}
             <div class="relative flex-1 min-w-0 group">
                 <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-300 group-focus-within:text-indigo-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
@@ -60,15 +58,17 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                 </svg>
                 <input type="date" wire:model.live="dateFrom"
-                       class="bg-transparent text-xs font-bold text-gray-600 focus:outline-none border-none p-0 focus:ring-0 [color-scheme:light] w-full sm:w-auto">
+                       class="bg-transparent text-xs font-bold text-gray-600 focus:outline-none border-none p-0 focus:ring-0 [color-scheme:light]"
+                       style="width: auto;">
                 <span class="text-gray-300 font-bold text-xs flex-shrink-0">—</span>
                 <input type="date" wire:model.live="dateTo"
-                       class="bg-transparent text-xs font-bold text-gray-600 focus:outline-none border-none p-0 focus:ring-0 [color-scheme:light] w-full sm:w-auto">
+                       class="bg-transparent text-xs font-bold text-gray-600 focus:outline-none border-none p-0 focus:ring-0 [color-scheme:light]"
+                       style="width: auto;">
             </div>
 
             {{-- 4. Reset --}}
             @if($dateFrom || $dateTo || $search || $filterType)
-                <button type="button" 
+                <button type="button"
                         wire:click="$set('dateFrom', null); $set('dateTo', null); $set('search', ''); $set('filterType', '');"
                         class="flex items-center justify-center gap-2 px-4 py-3 bg-gray-100 hover:bg-gray-200 text-gray-600 text-xs font-black rounded-2xl transition-all active:scale-95 uppercase tracking-wider shadow-sm w-full sm:w-auto">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
@@ -81,24 +81,6 @@
         </div>
     </div>
 
-    {{-- STYLE DIPINDAHKAN KE DALAM PEMBUNGKUS UTAMA --}}
-    <style>
-        input[type="date"]::-webkit-calendar-picker-indicator {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            cursor: pointer;
-            opacity: 0;
-        }
-    </style>
-
-</div> {{-- AKHIR PEMBUNGKUS UTAMA --}}
-       
-   
     {{-- Main Table Card --}}
     <div class="bg-white rounded-[2rem] border border-gray-100 shadow-sm overflow-hidden">
         <div class="overflow-x-auto">
