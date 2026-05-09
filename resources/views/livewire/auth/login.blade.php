@@ -21,7 +21,7 @@
 
             <!-- Pokeball: satu SVG, animasi via Alpine -->
             <div class="relative" style="width:160px;height:210px;display:flex;align-items:center;justify-content:center;">
-                    <svg width="160" height="160" viewBox="0 0 160 160">
+    <svg width="160" height="210" viewBox="0 -25 160 210" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;">
 
                     <!-- TOP HALF (merah) -->
                     <g :style="tab === 'register'
@@ -50,11 +50,9 @@
 
                     <!-- CENTER BUTTON -->
                     <circle cx="80" cy="80"
-                        :r="tab === 'register' ? '18' : '13'"
+                         :r="tab === 'register' ? '18' : '13'"
                         :fill="tab === 'register' ? '#fef08a' : '#fff'"
-                        stroke="#111" stroke-width="3.5"
-                        style="transition: r 0.4s cubic-bezier(.4,0,.2,1), fill 0.4s;"/>
-
+                         style="transition: r 0.4s cubic-bezier(.4,0,.2,1), fill 0.4s;"/>
                     <!-- Inner circle highlight -->
                     <circle cx="80" cy="80"
                         :r="tab === 'register' ? '10' : '6'"
