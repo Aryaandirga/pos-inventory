@@ -50,14 +50,19 @@
 
                     <!-- CENTER BUTTON -->
                     <circle cx="80" cy="80"
-                         :r="tab === 'register' ? '18' : '13'"
-                        :fill="tab === 'register' ? '#fef08a' : '#fff'"
-                         style="transition: r 0.4s cubic-bezier(.4,0,.2,1), fill 0.4s;"/>
+    :r="tab === 'register' ? '18' : '13'"
+    :fill="tab === 'register' ? '#fef08a' : '#fff'"
+    :opacity="tab === 'register' ? '0' : '1'"
+    stroke="#111" stroke-width="3.5"
+    style="transition: r 0.4s cubic-bezier(.4,0,.2,1), fill 0.4s, opacity 0.4s;"/>
+
+
                     <!-- Inner circle highlight -->
                     <circle cx="80" cy="80"
-                        :r="tab === 'register' ? '10' : '6'"
-                        :fill="tab === 'register' ? '#fde047' : '#e5e7eb'"
-                        style="transition: r 0.4s cubic-bezier(.4,0,.2,1), fill 0.4s;"/>
+    :r="tab === 'register' ? '10' : '6'"
+    :fill="tab === 'register' ? '#fde047' : '#e5e7eb'"
+    :opacity="tab === 'register' ? '0' : '1'"
+    style="transition: r 0.4s cubic-bezier(.4,0,.2,1), fill 0.4s, opacity 0.4s;"/>
 
                 </svg>
             </div>
