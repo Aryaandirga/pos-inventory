@@ -53,12 +53,12 @@ class OrderApiController extends Controller
             // Buat sale items & kurangi stok
             foreach ($request->items as $item) {
                 SaleItem::create([
-                    'sale_id'    => $sale->id,
-                    'product_id' => $item['id'],
-                    'qty'        => $item['qty'],
-                    'price'      => $item['price'],
-                ]);
-
+    'sale_id'    => $sale->id,
+    'product_id' => $item['id'],
+    'qty'        => $item['qty'],
+    'price'      => $item['price'],
+    'subtotal'   => $item['qty'] * $item['price'], // tambahkan ini
+]);
                 // Kurangi stok
                 Product::where('id', $item['id'])
                     ->decrement('stock', $item['qty']);
