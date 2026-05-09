@@ -1,10 +1,6 @@
 <x-layouts::auth.simple>
 
-<div x-data="{ tab: 'login' }" class="min-h-screen flex items-center justify-center bg-gray-100 px-4 py-8">
-
-    <div class="w-full max-w-5xl bg-white rounded-2xl shadow-2xl overflow-hidden flex">
-
-       <div 
+<div 
     x-data="{ tab: 'login' }" 
     class="relative" 
     style="width:160px;height:210px;display:flex;align-items:center;justify-content:center;"
