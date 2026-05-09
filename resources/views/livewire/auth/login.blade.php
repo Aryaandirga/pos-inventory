@@ -5,7 +5,7 @@
     <div class="w-full max-w-5xl bg-white rounded-2xl shadow-2xl overflow-hidden flex">
 
         <!-- LEFT: Pokeball Animation -->
-        <div class="hidden lg:flex w-1/2 items-center justify-center overflow-hidden relative flex-col gap-6"
+        <div class="hidden lg:flex w-1/2 items-center justify-center relative flex-col gap-6"
              style="background: linear-gradient(135deg, #fecdd3 0%, #fef3c7 50%, #bae6fd 100%);">
 
             <!-- Tulisan atas -->
@@ -20,8 +20,8 @@
                  style="background: radial-gradient(circle at center, rgba(255,220,80,0.4) 0%, transparent 65%);"></div>
 
             <!-- Pokeball: satu SVG, animasi via Alpine -->
-            <div class="relative" style="width:160px;height:160px;">
-                <svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;">
+            <div class="relative" style="width:160px;height:210px;display:flex;align-items:center;justify-content:center;">
+                    <svg width="160" height="160" viewBox="0 0 160 160">
 
                     <!-- TOP HALF (merah) -->
                     <g :style="tab === 'register'
