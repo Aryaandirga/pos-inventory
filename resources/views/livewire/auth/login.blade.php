@@ -32,7 +32,7 @@
                     <g :class="tab === 'register' ? 'top-open' : 'top-close'"
                        style="transform-origin:center; transition: all 0.5s cubic-bezier(.34,1.56,.64,1);">
                         <path d="M4 80 A76 76 0 0 1 156 80 Z" fill="#ef4444"/>
-                        <path d="M4 80 A76 76 0 0 1 156 80 Z" fill="none" stroke="#374151" stroke-width="3"/>
+                        <path d="M4 80 A76 76 0 0 1 156 80 Z" fill="none" stroke="#4b5563" stroke-width="3"/>
                         <ellipse cx="52" cy="44" rx="13" ry="5" fill="white" opacity="0.3"
                                  transform="rotate(-20 52 44)"/>
                     </g>
@@ -41,7 +41,7 @@
                     <g :class="tab === 'register' ? 'bottom-open' : 'bottom-close'"
                        style="transform-origin:center; transition: all 0.5s cubic-bezier(.34,1.56,.64,1);">
                         <path d="M4 80 A76 76 0 0 0 156 80 Z" fill="#ffffff"/>
-                        <path d="M4 80 A76 76 0 0 0 156 80 Z" fill="none" stroke="#374151" stroke-width="3"/>
+                        <path d="M4 80 A76 76 0 0 0 156 80 Z" fill="none" stroke="#4b5563" stroke-width="3"/>
                     </g>
 
                     <!-- OUTER -->
@@ -49,7 +49,7 @@
 
                     <!-- LINE -->
                     <line x1="4" y1="80" x2="156" y2="80"
-                          stroke="#374151" stroke-width="3"
+                          stroke="#4b5563" stroke-width="3"
                           :class="tab === 'register' ? 'opacity-0' : 'opacity-100 transition-all duration-300'" />
 
                     <!-- BUTTON -->
@@ -57,7 +57,7 @@
                             :r="tab === 'register' ? '18' : '13'"
                             :fill="tab === 'register' ? '#fde047' : '#ffffff'"
                             :opacity="tab === 'register' ? '0' : '1'"
-                            stroke="#374151"
+                            stroke="#4b5563"
                             stroke-width="3"
                             style="transition: all 0.3s;" />
 
@@ -117,13 +117,13 @@
                         <div class="space-y-1.5">
                             <label class="text-xs text-gray-600">Email</label>
                             <input type="email" name="email"
-                                class="w-full px-3 py-2 border rounded-xl text-sm focus:ring-2 focus:ring-green-200">
+                                class="w-full px-3.5 py-2.5 border border-gray-300 rounded-xl text-sm text-gray-800 bg-white placeholder-gray-300 focus:outline-none focus:border-green-400 focus:ring-2 focus:ring-green-100 transition-all">
                         </div>
 
                         <div class="space-y-1.5">
                             <label class="text-xs text-gray-600">Password</label>
                             <input type="password" name="password"
-                                class="w-full px-3 py-2 border rounded-xl text-sm focus:ring-2 focus:ring-green-200">
+                                class="w-full px-3.5 py-2.5 border border-gray-300 rounded-xl text-sm text-gray-800 bg-white placeholder-gray-300 focus:outline-none focus:border-green-400 focus:ring-2 focus:ring-green-100 transition-all">
                         </div>
 
                         <button class="w-full bg-gray-900 text-white py-2.5 rounded-xl text-sm font-semibold">
@@ -140,13 +140,13 @@
                         @csrf
 
                         <input type="text" name="name" placeholder="Nama"
-                            class="w-full px-3 py-2 border rounded-xl text-sm">
+                            class="w-full px-3.5 py-2.5 border border-gray-300 rounded-xl text-sm text-gray-800 bg-white placeholder-gray-300 focus:outline-none focus:border-green-400 focus:ring-2 focus:ring-green-100 transition-all">
 
                         <input type="email" name="email" placeholder="Email"
-                            class="w-full px-3 py-2 border rounded-xl text-sm">
+                            class="w-full px-3.5 py-2.5 border border-gray-300 rounded-xl text-sm text-gray-800 bg-white placeholder-gray-300 focus:outline-none focus:border-green-400 focus:ring-2 focus:ring-green-100 transition-all">
 
                         <input type="password" name="password" placeholder="Password"
-                            class="w-full px-3 py-2 border rounded-xl text-sm">
+                            class="w-full px-3.5 py-2.5 border border-gray-300 rounded-xl text-sm text-gray-800 bg-white placeholder-gray-300 focus:outline-none focus:border-green-400 focus:ring-2 focus:ring-green-100 transition-all">
 
                         <button class="w-full bg-green-500 text-white py-2.5 rounded-xl text-sm font-semibold">
                             Register
