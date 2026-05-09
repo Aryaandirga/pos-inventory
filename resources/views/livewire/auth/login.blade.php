@@ -1,65 +1,85 @@
 <x-layouts::auth.simple>
 
-<div 
-    x-data="{ tab: 'login' }" 
-    class="relative" 
-    style="width:160px;height:210px;display:flex;align-items:center;justify-content:center;"
->
+<div x-data="{ tab: 'login' }" class="min-h-screen flex items-center justify-center bg-gray-100 px-4 py-8">
 
-<svg width="160" height="210" viewBox="0 -25 160 210" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;">
+    <div class="w-full max-w-5xl bg-white rounded-2xl shadow-2xl overflow-hidden flex">
 
-    <!-- TOP HALF -->
-    <g 
-        :class="tab === 'register' ? 'top-open' : 'top-close'"
-        class="transition-all duration-500 ease-out origin-center"
-    >
-        <path d="M4 80 A76 76 0 0 1 156 80 Z" fill="#f87171"/>
-        <path d="M4 80 A76 76 0 0 1 156 80 Z" fill="none" stroke="#111" stroke-width="3.5"/>
-        <ellipse cx="52" cy="44" rx="13" ry="5" fill="white" opacity="0.25" transform="rotate(-20 52 44)"/>
-    </g>
+        <!-- LEFT -->
+        <div class="hidden lg:flex w-1/2 items-center justify-center relative flex-col gap-6"
+             style="background: linear-gradient(135deg, #f0fdf4 0%, #ecfeff 50%, #eef2ff 100%);">
 
-    <!-- BOTTOM HALF -->
-    <g 
-        :class="tab === 'register' ? 'bottom-open' : 'bottom-close'"
-        class="transition-all duration-500 ease-out origin-center"
-    >
-        <path d="M4 80 A76 76 0 0 0 156 80 Z" fill="#fff"/>
-        <path d="M4 80 A76 76 0 0 0 156 80 Z" fill="none" stroke="#111" stroke-width="3.5"/>
-    </g>
+            <!-- Title -->
+            <div class="absolute top-8 text-center">
+                <p class="text-lg font-black text-gray-800 tracking-tight">PokeArth Tech</p>
+                <p class="text-xs text-gray-500 mt-0.5">Management System</p>
+            </div>
 
-    <!-- OUTER -->
-    <circle cx="80" cy="80" r="76" stroke="#111" stroke-width="3.5" fill="none"/>
+            <!-- Glow -->
+            <div class="absolute inset-0 pointer-events-none transition-all duration-500"
+                 :class="tab === 'register' ? 'opacity-100 scale-110' : 'opacity-0 scale-100'"
+                 style="background: radial-gradient(circle at center, rgba(34,197,94,0.25) 0%, transparent 70%);">
+            </div>
 
-    <!-- LINE -->
-    <line x1="4" y1="80" x2="156" y2="80"
-          stroke="#111" stroke-width="3.5"
-          :class="tab === 'register' ? 'opacity-0' : 'opacity-100 transition-all duration-300'" />
+            <!-- Pokeball -->
+            <div class="relative flex items-center justify-center"
+                 :class="tab === 'register' ? 'scale-105' : 'scale-100'"
+                 style="width:160px;height:210px; transition: all 0.4s;">
 
-    <!-- BUTTON -->
-    <circle cx="80" cy="80"
-        :class="tab === 'register' ? 'btn-open' : 'btn-close'"
-        stroke="#111" stroke-width="3.5"
-        class="transition-all duration-300"
-    />
+                <svg width="160" height="210" viewBox="0 -25 160 210" fill="none"
+                     xmlns="http://www.w3.org/2000/svg" style="overflow:visible;">
 
-    <!-- INNER -->
-    <circle cx="80" cy="80"
-        :class="tab === 'register' ? 'inner-open' : 'inner-close'"
-        class="transition-all duration-300"
-    />
+                    <!-- TOP -->
+                    <g :class="tab === 'register' ? 'top-open' : 'top-close'"
+                       style="transform-origin:center; transition: all 0.5s cubic-bezier(.34,1.56,.64,1);">
+                        <path d="M4 80 A76 76 0 0 1 156 80 Z" fill="#ef4444"/>
+                        <path d="M4 80 A76 76 0 0 1 156 80 Z" fill="none" stroke="#374151" stroke-width="3"/>
+                        <ellipse cx="52" cy="44" rx="13" ry="5" fill="white" opacity="0.3"
+                                 transform="rotate(-20 52 44)"/>
+                    </g>
 
-</svg>
-</div>
+                    <!-- BOTTOM -->
+                    <g :class="tab === 'register' ? 'bottom-open' : 'bottom-close'"
+                       style="transform-origin:center; transition: all 0.5s cubic-bezier(.34,1.56,.64,1);">
+                        <path d="M4 80 A76 76 0 0 0 156 80 Z" fill="#ffffff"/>
+                        <path d="M4 80 A76 76 0 0 0 156 80 Z" fill="none" stroke="#374151" stroke-width="3"/>
+                    </g>
 
-            <!-- Label bawah -->
+                    <!-- OUTER -->
+                    <circle cx="80" cy="80" r="76" stroke="#374151" stroke-width="3" fill="none"/>
+
+                    <!-- LINE -->
+                    <line x1="4" y1="80" x2="156" y2="80"
+                          stroke="#374151" stroke-width="3"
+                          :class="tab === 'register' ? 'opacity-0' : 'opacity-100 transition-all duration-300'" />
+
+                    <!-- BUTTON -->
+                    <circle cx="80" cy="80"
+                            :r="tab === 'register' ? '18' : '13'"
+                            :fill="tab === 'register' ? '#fde047' : '#ffffff'"
+                            :opacity="tab === 'register' ? '0' : '1'"
+                            stroke="#374151"
+                            stroke-width="3"
+                            style="transition: all 0.3s;" />
+
+                    <!-- INNER -->
+                    <circle cx="80" cy="80"
+                            :r="tab === 'register' ? '10' : '6'"
+                            :fill="tab === 'register' ? '#facc15' : '#e5e7eb'"
+                            :opacity="tab === 'register' ? '0' : '1'"
+                            style="transition: all 0.3s;" />
+
+                </svg>
+            </div>
+
+            <!-- Bottom text -->
             <div class="absolute bottom-8 text-center">
-                <p class="text-sm font-semibold text-gray-600 transition-all duration-300"
+                <p class="text-sm font-semibold text-gray-700 transition-all duration-300"
                    x-text="tab === 'login' ? 'Masuk ke akunmu' : 'Buat akun baru'"></p>
                 <p class="text-xs text-gray-400 mt-1">Pokemon Card POS</p>
             </div>
         </div>
 
-        <!-- RIGHT: Form -->
+        <!-- RIGHT -->
         <div class="w-full lg:w-1/2 p-8 flex flex-col">
             <div class="max-w-sm mx-auto w-full space-y-5 flex flex-col flex-1">
 
@@ -73,124 +93,63 @@
                 <div class="flex bg-gray-100 p-1 rounded-xl">
                     <button @click="tab='login'"
                         :class="tab==='login' ? 'bg-white shadow text-gray-800 font-semibold' : 'text-gray-400'"
-                        class="w-1/2 py-2 rounded-xl text-sm transition-all duration-200">
+                        class="w-1/2 py-2 rounded-xl text-sm transition">
                         Login
                     </button>
                     <button @click="tab='register'"
                         :class="tab==='register' ? 'bg-white shadow text-gray-800 font-semibold' : 'text-gray-400'"
-                        class="w-1/2 py-2 rounded-xl text-sm transition-all duration-200">
+                        class="w-1/2 py-2 rounded-xl text-sm transition">
                         Register
                     </button>
                 </div>
 
-                <!-- FORM WRAPPER — fixed height, scroll jika overflow -->
+                <!-- FORM -->
                 <div class="relative flex-1" style="min-height:380px;">
 
-                    <!-- LOGIN FORM -->
-                    <form
-                        x-show="tab==='login'"
-                        x-cloak
-                        x-transition:enter="transform transition duration-300 ease-in-out"
-                        x-transition:enter-start="-translate-x-full opacity-0"
-                        x-transition:enter-end="translate-x-0 opacity-100"
-                        x-transition:leave="transform transition duration-300 ease-in-out"
-                        x-transition:leave-start="translate-x-0 opacity-100"
-                        x-transition:leave-end="translate-x-full opacity-0"
-                        class="space-y-4 absolute inset-0 will-change-transform overflow-y-auto"
+                    <!-- LOGIN -->
+                    <form x-show="tab==='login'" x-cloak
+                        x-transition
+                        class="space-y-4 absolute inset-0 overflow-y-auto"
                         method="POST"
-                        action="{{ route('login.store') }}"
-                    >
+                        action="{{ route('login.store') }}">
                         @csrf
 
-                        @if ($errors->any())
-                            <div class="bg-red-50 border border-red-200 text-red-600 text-xs px-3 py-2 rounded-lg">
-                                {{ $errors->first() }}
-                            </div>
-                        @endif
-
                         <div class="space-y-1.5">
-                            <label class="text-xs font-medium text-gray-600">Email</label>
-                            <input type="email" name="email" value="{{ old('email') }}"
-                                class="w-full px-3.5 py-2.5 border border-gray-300 rounded-xl text-sm text-gray-800 bg-white placeholder-gray-300 focus:outline-none focus:border-rose-400 focus:ring-2 focus:ring-rose-100 transition-all"
-                                placeholder="admin@pos.com">
+                            <label class="text-xs text-gray-600">Email</label>
+                            <input type="email" name="email"
+                                class="w-full px-3 py-2 border rounded-xl text-sm focus:ring-2 focus:ring-green-200">
                         </div>
 
                         <div class="space-y-1.5">
-                            <label class="text-xs font-medium text-gray-600">Password</label>
+                            <label class="text-xs text-gray-600">Password</label>
                             <input type="password" name="password"
-                                class="w-full px-3.5 py-2.5 border border-gray-300 rounded-xl text-sm text-gray-800 bg-white placeholder-gray-300 focus:outline-none focus:border-rose-400 focus:ring-2 focus:ring-rose-100 transition-all"
-                                placeholder="••••••••">
+                                class="w-full px-3 py-2 border rounded-xl text-sm focus:ring-2 focus:ring-green-200">
                         </div>
 
-                        <div class="flex justify-between items-center text-xs text-gray-400">
-                            <label class="flex items-center gap-1.5 cursor-pointer">
-                                <input type="checkbox" name="remember" class="rounded border-gray-300 text-rose-400">
-                                <span>Remember me</span>
-                            </label>
-                            @if (Route::has('password.request'))
-                                <a href="{{ route('password.request') }}" class="text-rose-400 hover:text-rose-500 transition">Forgot?</a>
-                            @endif
-                        </div>
-
-                        <button type="submit"
-                            class="w-full bg-gray-900 hover:bg-black text-white py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 hover:shadow-lg">
+                        <button class="w-full bg-gray-900 text-white py-2.5 rounded-xl text-sm font-semibold">
                             Log in
                         </button>
                     </form>
 
-                    <!-- REGISTER FORM -->
-                    <form
-                        x-show="tab==='register'"
-                        x-cloak
-                        x-transition:enter="transform transition duration-300 ease-in-out"
-                        x-transition:enter-start="translate-x-full opacity-0"
-                        x-transition:enter-end="translate-x-0 opacity-100"
-                        x-transition:leave="transform transition duration-300 ease-in-out"
-                        x-transition:leave-start="translate-x-0 opacity-100"
-                        x-transition:leave-end="-translate-x-full opacity-0"
-                        class="space-y-3 absolute inset-0 will-change-transform overflow-y-auto pb-1"
+                    <!-- REGISTER -->
+                    <form x-show="tab==='register'" x-cloak
+                        x-transition
+                        class="space-y-3 absolute inset-0 overflow-y-auto"
                         method="POST"
-                        action="{{ route('register') }}"
-                    >
+                        action="{{ route('register') }}">
                         @csrf
 
-                        @if ($errors->any())
-                            <div class="bg-red-50 border border-red-200 text-red-600 text-xs px-3 py-2 rounded-lg">
-                                {{ $errors->first() }}
-                            </div>
-                        @endif
+                        <input type="text" name="name" placeholder="Nama"
+                            class="w-full px-3 py-2 border rounded-xl text-sm">
 
-                        <div class="space-y-1.5">
-                            <label class="text-xs font-medium text-gray-600">Nama Lengkap</label>
-                            <input type="text" name="name" value="{{ old('name') }}"
-                                class="w-full px-3.5 py-2.5 border border-gray-300 rounded-xl text-sm text-gray-800 bg-white placeholder-gray-300 focus:outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-100 transition-all"
-                                placeholder="Nama kamu">
-                        </div>
+                        <input type="email" name="email" placeholder="Email"
+                            class="w-full px-3 py-2 border rounded-xl text-sm">
 
-                        <div class="space-y-1.5">
-                            <label class="text-xs font-medium text-gray-600">Email</label>
-                            <input type="email" name="email" value="{{ old('email') }}"
-                                class="w-full px-3.5 py-2.5 border border-gray-300 rounded-xl text-sm text-gray-800 bg-white placeholder-gray-300 focus:outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-100 transition-all"
-                                placeholder="email@example.com">
-                        </div>
+                        <input type="password" name="password" placeholder="Password"
+                            class="w-full px-3 py-2 border rounded-xl text-sm">
 
-                        <div class="space-y-1.5">
-                            <label class="text-xs font-medium text-gray-600">Password</label>
-                            <input type="password" name="password"
-                                class="w-full px-3.5 py-2.5 border border-gray-300 rounded-xl text-sm text-gray-800 bg-white placeholder-gray-300 focus:outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-100 transition-all"
-                                placeholder="Min. 8 karakter (huruf & angka)">
-                        </div>
-
-                        <div class="space-y-1.5">
-                            <label class="text-xs font-medium text-gray-600">Konfirmasi Password</label>
-                            <input type="password" name="password_confirmation"
-                                class="w-full px-3.5 py-2.5 border border-gray-300 rounded-xl text-sm text-gray-800 bg-white placeholder-gray-300 focus:outline-none focus:border-sky-400 focus:ring-2 focus:ring-sky-100 transition-all"
-                                placeholder="••••••••">
-                        </div>
-
-                        <button type="submit"
-                            class="w-full bg-sky-400 hover:bg-sky-500 text-white py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 hover:shadow-lg">
-                            Daftar Sekarang
+                        <button class="w-full bg-green-500 text-white py-2.5 rounded-xl text-sm font-semibold">
+                            Register
                         </button>
                     </form>
 
@@ -202,5 +161,14 @@
     </div>
 
 </div>
+
+<!-- CSS ANIMATION -->
+<style>
+.top-open { transform: translateY(-28px) rotate(-14deg); }
+.top-close { transform: translateY(0) rotate(0); }
+
+.bottom-open { transform: translateY(28px) rotate(14deg); }
+.bottom-close { transform: translateY(0) rotate(0); }
+</style>
 
 </x-layouts::auth.simple>
