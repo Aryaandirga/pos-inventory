@@ -23,8 +23,8 @@
                 {{-- Glow orb --}}
                 <div class="absolute top-0 left-0 w-full h-full pointer-events-none">
                     <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full blur-3xl transition-all duration-700"
-                         :class="tab === 'register' ? 'opacity-30' : 'opacity-15'"
-                         style="background: radial-gradient(circle, #6366f1, transparent);"></div>
+                         :class="tab === 'register' ? 'opacity-40' : 'opacity-15'"
+                         style="background: radial-gradient(circle, #fde047 0%, #f59e0b 40%, transparent 70%);"></div>
                 </div>
 
                 {{-- Content --}}
@@ -43,58 +43,81 @@
                         </div>
                     </div>
 
-                    {{-- Pokeball --}}
-                    <div class="flex items-center justify-center my-8">
-                        <div class="relative" style="width:140px;height:140px;">
-                            <svg width="140" height="140" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;">
+                    {{-- Lightning Animation --}}
+                    <div class="flex items-center justify-center my-6">
+                        <div class="relative flex items-center justify-center" style="width:160px;height:180px;">
 
-                                {{-- TOP HALF --}}
-                                <g :style="tab === 'register'
-                                    ? 'transform:translate(80px,80px) rotate(-14deg) translate(-80px,-80px) translateY(-26px); transition:transform 0.5s cubic-bezier(.34,1.56,.64,1);'
-                                    : 'transform:translate(0,0); transition:transform 0.5s cubic-bezier(.34,1.56,.64,1);'">
-                                    <path d="M4 80 A76 76 0 0 1 156 80 Z" fill="#ef4444"/>
-                                    <path d="M4 80 A76 76 0 0 1 156 80 Z" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2.5"/>
-                                    <ellipse cx="52" cy="44" rx="14" ry="5" fill="white" opacity="0.25" transform="rotate(-20 52 44)"/>
-                                    <ellipse cx="68" cy="36" rx="6" ry="3" fill="white" opacity="0.15" transform="rotate(-20 68 36)"/>
-                                </g>
+                            {{-- Glow ring behind bolt --}}
+                            <div class="absolute inset-0 rounded-full blur-2xl transition-all duration-700"
+                                 :class="tab === 'register' ? 'opacity-60 scale-110' : 'opacity-30 scale-100'"
+                                 style="background: radial-gradient(circle, #fde047 0%, #f59e0b 40%, transparent 70%);"></div>
 
-                                {{-- BOTTOM HALF --}}
-                                <g :style="tab === 'register'
-                                    ? 'transform:translate(80px,80px) rotate(14deg) translate(-80px,-80px) translateY(26px); transition:transform 0.5s cubic-bezier(.34,1.56,.64,1);'
-                                    : 'transform:translate(0,0); transition:transform 0.5s cubic-bezier(.34,1.56,.64,1);'">
-                                    <path d="M4 80 A76 76 0 0 0 156 80 Z" fill="rgba(255,255,255,0.9)"/>
-                                    <path d="M4 80 A76 76 0 0 0 156 80 Z" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2.5"/>
-                                </g>
+                            {{-- Electric arc particles --}}
+                            <div class="absolute inset-0" :class="tab === 'register' ? 'opacity-100' : 'opacity-0'" style="transition: opacity 0.4s;">
+                                <div class="absolute top-2 left-8 w-1 h-6 bg-yellow-300 rounded-full bolt-spark" style="transform: rotate(25deg); animation: spark1 0.8s ease-in-out infinite;"></div>
+                                <div class="absolute top-4 right-6 w-1 h-4 bg-yellow-200 rounded-full" style="transform: rotate(-30deg); animation: spark2 0.6s ease-in-out infinite 0.2s;"></div>
+                                <div class="absolute bottom-6 left-4 w-1 h-5 bg-amber-300 rounded-full" style="transform: rotate(15deg); animation: spark1 0.9s ease-in-out infinite 0.1s;"></div>
+                                <div class="absolute bottom-4 right-8 w-1 h-3 bg-yellow-300 rounded-full" style="transform: rotate(-20deg); animation: spark2 0.7s ease-in-out infinite 0.3s;"></div>
+                                <div class="absolute top-1/2 left-1 w-0.5 h-8 bg-yellow-200 rounded-full" style="transform: rotate(40deg) translateY(-50%); animation: spark1 1s ease-in-out infinite 0.15s;"></div>
+                                <div class="absolute top-1/2 right-1 w-0.5 h-6 bg-amber-200 rounded-full" style="transform: rotate(-40deg) translateY(-50%); animation: spark2 0.85s ease-in-out infinite 0.25s;"></div>
+                            </div>
 
-                                {{-- OUTER RING --}}
-                                <circle cx="80" cy="80" r="76" stroke="rgba(255,255,255,0.25)" stroke-width="2.5" fill="none"/>
+                            {{-- Main Lightning Bolt SVG --}}
+                            <svg viewBox="0 0 120 180" fill="none" xmlns="http://www.w3.org/2000/svg"
+                                 class="relative z-10 transition-all duration-500"
+                                 :class="tab === 'register' ? 'scale-110 drop-shadow-[0_0_20px_rgba(253,224,71,0.9)]' : 'scale-100 drop-shadow-[0_0_8px_rgba(253,224,71,0.4)]'"
+                                 style="width:100px;height:150px; animation: boltFloat 3s ease-in-out infinite;">
 
-                                {{-- MIDDLE LINE --}}
-                                <line x1="4" y1="80" x2="156" y2="80"
-                                      stroke="rgba(255,255,255,0.3)" stroke-width="2.5"
-                                      :style="tab === 'register' ? 'opacity:0;transition:opacity 0.3s' : 'opacity:1;transition:opacity 0.3s'"/>
+                                {{-- Shadow/depth layer (offset) --}}
+                                <path d="M72 8 L28 88 L54 88 L18 172 L92 72 L64 72 Z"
+                                      fill="#92400e" opacity="0.35" transform="translate(5,5)"/>
 
-                                {{-- CENTER BUTTON --}}
-                                <circle cx="80" cy="80"
-                                    :r="tab === 'register' ? '20' : '14'"
-                                    :fill="tab === 'register' ? '#fde047' : 'white'"
-                                    stroke="rgba(255,255,255,0.4)" stroke-width="2.5"
-                                    style="transition: r 0.4s cubic-bezier(.34,1.56,.64,1), fill 0.4s;"/>
-                                <circle cx="80" cy="80"
-                                    :r="tab === 'register' ? '11' : '7'"
-                                    :fill="tab === 'register' ? '#facc15' : '#e5e7eb'"
-                                    style="transition: r 0.4s cubic-bezier(.34,1.56,.64,1), fill 0.4s;"/>
+                                {{-- Dark outline --}}
+                                <path d="M72 8 L28 88 L54 88 L18 172 L92 72 L64 72 Z"
+                                      fill="#78350f" stroke="#451a03" stroke-width="2" stroke-linejoin="round"/>
 
-                                {{-- Sparkles saat register --}}
-                                <g :style="tab === 'register' ? 'opacity:1;transition:opacity 0.4s 0.2s' : 'opacity:0;transition:opacity 0.2s'">
-                                    <circle cx="80" cy="30" r="3" fill="#fde047" opacity="0.8"/>
-                                    <circle cx="130" cy="60" r="2" fill="#a78bfa" opacity="0.8"/>
-                                    <circle cx="30" cy="60" r="2" fill="#a78bfa" opacity="0.8"/>
-                                    <circle cx="115" cy="115" r="2.5" fill="#fde047" opacity="0.6"/>
-                                    <circle cx="45" cy="115" r="2.5" fill="#fde047" opacity="0.6"/>
-                                </g>
+                                {{-- Main body gradient --}}
+                                <path d="M72 8 L28 88 L54 88 L18 172 L92 72 L64 72 Z"
+                                      fill="url(#boltGrad)"/>
 
+                                {{-- Highlight shine top --}}
+                                <path d="M68 14 L42 72 L56 72 L50 90"
+                                      fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="3" stroke-linecap="round"/>
+
+                                {{-- Small highlight dot --}}
+                                <ellipse cx="66" cy="22" rx="5" ry="3" fill="white" opacity="0.6" transform="rotate(-15 66 22)"/>
+
+                                {{-- Electric pulse overlay --}}
+                                <path d="M72 8 L28 88 L54 88 L18 172 L92 72 L64 72 Z"
+                                      fill="url(#boltPulse)"
+                                      :style="tab === 'register' ? 'opacity:0.4' : 'opacity:0'"
+                                      style="transition: opacity 0.3s;"/>
+
+                                <defs>
+                                    <linearGradient id="boltGrad" x1="18" y1="8" x2="92" y2="172" gradientUnits="userSpaceOnUse">
+                                        <stop offset="0%" stop-color="#fef08a"/>
+                                        <stop offset="35%" stop-color="#fde047"/>
+                                        <stop offset="70%" stop-color="#eab308"/>
+                                        <stop offset="100%" stop-color="#ca8a04"/>
+                                    </linearGradient>
+                                    <linearGradient id="boltPulse" x1="18" y1="8" x2="92" y2="172" gradientUnits="userSpaceOnUse">
+                                        <stop offset="0%" stop-color="white"/>
+                                        <stop offset="100%" stop-color="#fde047"/>
+                                    </linearGradient>
+                                </defs>
                             </svg>
+
+                            {{-- Small bolts orbiting --}}
+                            <div class="absolute inset-0 transition-all duration-500"
+                                 :class="tab === 'register' ? 'opacity-100' : 'opacity-0'">
+                                <svg class="absolute top-0 right-2" width="20" height="30" viewBox="0 0 120 180" style="animation: orbitBolt1 2s ease-in-out infinite;">
+                                    <path d="M72 8 L28 88 L54 88 L18 172 L92 72 L64 72 Z" fill="#fde047" opacity="0.7"/>
+                                </svg>
+                                <svg class="absolute bottom-2 left-0" width="14" height="22" viewBox="0 0 120 180" style="animation: orbitBolt2 2.5s ease-in-out infinite 0.5s;">
+                                    <path d="M72 8 L28 88 L54 88 L18 172 L92 72 L64 72 Z" fill="#fbbf24" opacity="0.6"/>
+                                </svg>
+                            </div>
+
                         </div>
                     </div>
 
@@ -321,6 +344,34 @@
     from { opacity: 0; transform: translateY(20px); }
     to   { opacity: 1; transform: translateY(0); }
 }
+
+@keyframes boltFloat {
+    0%, 100% { transform: translateY(0px) rotate(-2deg); }
+    50%       { transform: translateY(-10px) rotate(2deg); }
+}
+
+@keyframes spark1 {
+    0%, 100% { opacity: 0; transform: rotate(25deg) scaleY(0.5); }
+    50%       { opacity: 1; transform: rotate(25deg) scaleY(1.2); }
+}
+
+@keyframes spark2 {
+    0%, 100% { opacity: 0; transform: rotate(-30deg) scaleY(0.3); }
+    50%       { opacity: 0.9; transform: rotate(-30deg) scaleY(1); }
+}
+
+@keyframes orbitBolt1 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 0.7; }
+    25%       { transform: translate(-8px, -6px) rotate(-10deg) scale(1.1); opacity: 1; }
+    75%       { transform: translate(4px, 4px) rotate(5deg) scale(0.9); opacity: 0.5; }
+}
+
+@keyframes orbitBolt2 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 0.6; }
+    40%       { transform: translate(6px, -8px) rotate(15deg) scale(1.15); opacity: 0.9; }
+    70%       { transform: translate(-4px, 3px) rotate(-8deg) scale(0.85); opacity: 0.4; }
+}
+
 [x-cloak] { display: none !important; }
 </style>
 
